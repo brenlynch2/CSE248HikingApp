@@ -3,7 +3,8 @@ package users_login;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import hiking_history.HikingEntry;
+import hiking_history.HikingHistoryEntry;
+import hiking_history.HikingHistoryStorageContainer;
 
 public class User implements Comparable<User>, Serializable{
 	/*
@@ -14,21 +15,21 @@ public class User implements Comparable<User>, Serializable{
 	private String username;
 	private String password;
 	private String profilePicture;
-	private LinkedList<HikingEntry> historyList;
+	private HikingHistoryStorageContainer historyList;
 	private int userHash;
 	
 	public User(String username, String password, String profilePicture) {
 		this.username = username;
 		this.password = password;
 		this.profilePicture = profilePicture;
-		this.historyList = new LinkedList<HikingEntry>();
+		this.historyList = new HikingHistoryStorageContainer();
 		this.userHash = generateHash(username,password);
 	}
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.profilePicture = "default";
-		this.historyList = new LinkedList<HikingEntry>();
+		this.historyList = new HikingHistoryStorageContainer();
 		this.userHash = generateHash(username,password);
 	}
 	private int generateHash(String username, String password) {
@@ -103,10 +104,10 @@ public class User implements Comparable<User>, Serializable{
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	public LinkedList<HikingEntry> getHistoryList() {
+	public HikingHistoryStorageContainer getHistoryList() {
 		return historyList;
 	}
-	public void setHistoryList(LinkedList<HikingEntry> historyList) {
+	public void setHikingHistoryStorageContainer(HikingHistoryStorageContainer historyList) {
 		this.historyList = historyList;
 	}
 	public int getUserHash() {

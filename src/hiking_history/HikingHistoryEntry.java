@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import trail_storage.Trail;
 
-public class HikingEntry implements Serializable{
+public class HikingHistoryEntry implements Serializable{
 	/*
 	 * For the sake of simplicity picturesTaken is defined with String as the list's storage datatype.
 	 * This will obviously be changed later in the development of the program to accomodate pictures.
@@ -66,7 +66,7 @@ public class HikingEntry implements Serializable{
 		this.averagePace = averagePace;
 	}
 
-	public HikingEntry(Trail trailHiked, String timestamp, double distance, String duration, LinkedList<String> picturesTaken, double averagePace) {
+	public HikingHistoryEntry(Trail trailHiked, String timestamp, double distance, String duration, LinkedList<String> picturesTaken, double averagePace) {
 		this.trailHiked = trailHiked;
 		this.timestamp = timestamp;
 		this.distance = distance;

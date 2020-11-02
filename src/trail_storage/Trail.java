@@ -10,7 +10,7 @@ public class Trail implements Comparable<Trail>, Serializable {
 	private double length;
 	private double elevationGain;
 	private int difficultyLevel;
-	private LinkedList<PointOfInterest> pointsOfInterestContainer;
+	private PointOfInterestStorageContainer pointsOfInterestList;
 	
 	public Trail(String trailName, String trailHeadAddress, double length, double elevationGain, int difficultyLevel) {
 		this.trailName = trailName;
@@ -18,7 +18,7 @@ public class Trail implements Comparable<Trail>, Serializable {
 		this.length = length;
 		this.elevationGain = elevationGain;
 		this.difficultyLevel = difficultyLevel;
-		this.pointsOfInterestContainer = new LinkedList<PointOfInterest>();
+		this.pointsOfInterestList = new PointOfInterestStorageContainer();
 	}
 	public Trail(String trailName) {
 		this.trailName = trailName;
@@ -26,7 +26,7 @@ public class Trail implements Comparable<Trail>, Serializable {
 		this.length = 0.0;
 		this.elevationGain = 0.0;
 		this.difficultyLevel = 0;
-		this.pointsOfInterestContainer = new LinkedList<PointOfInterest>();
+		this.pointsOfInterestList = new PointOfInterestStorageContainer();
 	}
 
 	public String getTrailName() {
@@ -69,12 +69,12 @@ public class Trail implements Comparable<Trail>, Serializable {
 		this.difficultyLevel = difficultyLevel;
 	}
 
-	public LinkedList<PointOfInterest> getPointsOfInterestContainer() {
-		return pointsOfInterestContainer;
+	public PointOfInterestStorageContainer getPointsOfInterestList() {
+		return pointsOfInterestList;
 	}
 
-	public void setPointsOfInterestContainer(LinkedList<PointOfInterest> pointsOfInterestContainer) {
-		this.pointsOfInterestContainer = pointsOfInterestContainer;
+	public void setPointsOfInterestList(PointOfInterestStorageContainer pointsOfInterestList) {
+		this.pointsOfInterestList = pointsOfInterestList;
 	}
 
 	@Override

@@ -11,18 +11,18 @@ public class HikingHistoryStorageContainer implements Serializable {
 	 * later.
 	 */
 	private static final long serialVersionUID = -7009333831083038934L;
-	private LinkedList<HikingEntry> hikingHistoryList;
+	private LinkedList<HikingHistoryEntry> hikingHistoryList;
 	
 	public HikingHistoryStorageContainer() {
-		hikingHistoryList = new LinkedList<HikingEntry>();
+		hikingHistoryList = new LinkedList<HikingHistoryEntry>();
 	}
-	public boolean addHistoryEntry(HikingEntry entryToAdd) {
+	public boolean addHistoryEntry(HikingHistoryEntry entryToAdd) {
 		return hikingHistoryList.add(entryToAdd);
 	}
-	public boolean deleteHistoryEntry(HikingEntry entryToRemove) {
+	public boolean deleteHistoryEntry(HikingHistoryEntry entryToRemove) {
 		return hikingHistoryList.remove(entryToRemove);
 	}
-	public HikingEntry getEntry(int index) {
+	public HikingHistoryEntry getEntry(int index) {
 		if(index <= hikingHistoryList.size()) {
 			return hikingHistoryList.get(index);
 		}

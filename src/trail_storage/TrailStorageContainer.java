@@ -27,7 +27,7 @@ public class TrailStorageContainer {
 	}
 	public void sortTrailList() {
 		/*
-		 * This method uses the same sorting algorithm that is used in the UserStorageContainer class.
+		 * This method uses the same sorting algorithm that is used in the LinkedListUserStorageContainer class.
 		 * See the comments within the sortUserList() method.
 		 * 
 		 */

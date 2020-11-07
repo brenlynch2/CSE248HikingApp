@@ -6,11 +6,11 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import trail_storage.Trail;
-import trail_storage.TrailStorageContainer;
-import users_login.LinkedListUserStorageContainer;
-import users_login.TreeMapUserStorageContainer;
-import users_login.User;
+import trails.Trail;
+import trails.TrailStorageContainer;
+import users.LinkedListUserStorageContainer;
+import users.TreeMapUserStorageContainer;
+import users.User;
 
 public class TestingFunctions {
 	private static LinkedList<String> listOfLastNames = new LinkedList<String>();

@@ -1,4 +1,4 @@
-package hiking_history;
+package history;
 
 import java.io.Serializable;
 import java.util.LinkedList;

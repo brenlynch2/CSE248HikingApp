@@ -1,4 +1,4 @@
-package trail_storage;
+package trails;
 
 import java.util.LinkedList;
 

@@ -1,10 +1,10 @@
-package users_login;
+package users;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import hiking_history.HikingHistoryEntry;
-import hiking_history.HikingHistoryStorageContainer;
+import history.HikingHistoryEntry;
+import history.HikingHistoryStorageContainer;
 
 public class User implements Comparable<User>, Serializable{
 	/*

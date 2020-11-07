@@ -1,9 +1,9 @@
-package hiking_history;
+package history;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import trail_storage.Trail;
+import trails.Trail;
 
 public class HikingHistoryEntry implements Serializable{
 	/*

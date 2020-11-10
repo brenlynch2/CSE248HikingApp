@@ -10,7 +10,7 @@ import history.HikingHistoryStorageContainer;
  * @author Brenden Lynch
  *
  */
-public class User implements Comparable<User>, Serializable{
+public class User implements Comparable<User>, Serializable {
 	/*
 	 * For the sake of simplicity, profilePicture is defined as String datatype. This will obviously
 	 * be changed later on to accommodate an actual picture.

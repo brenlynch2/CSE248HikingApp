@@ -1,12 +1,14 @@
 package users;
 
+import java.io.Serializable;
 import java.util.TreeMap;
 /** This class provides storage and authentication capabilities for User objects.
  * 
  * @author Brenden Lynch
  *
  */
-public class TreeMapUserStorageContainer {
+public class TreeMapUserStorageContainer implements Serializable {
+	private static final long serialVersionUID = 9047396112396890029L;
 	private TreeMap<Integer,User> userMap;
 	
 	/** Creates a new TreeMapUserStorageContainer object.

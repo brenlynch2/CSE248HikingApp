@@ -1,5 +1,6 @@
 package trails;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /** This class provides storage and organizational functionality for PointOfInterest objects.
@@ -7,7 +8,8 @@ import java.util.LinkedList;
  * @author Brenden Lynch
  *
  */
-public class PointOfInterestStorageContainer {
+public class PointOfInterestStorageContainer implements Serializable {
+	private static final long serialVersionUID = 5831817591743592862L;
 	private LinkedList<PointOfInterest> pointsOfInterestList;
 	
 	/** Creates a new PointOfInterestStorageContainer object.

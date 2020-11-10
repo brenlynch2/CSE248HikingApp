@@ -116,9 +116,9 @@ public class TestingFunctions {
 	}
 
 	private static void populateLists() {
-		File firstNameFile = new File("First_Names.txt");
-		File lastNameFile = new File("Last_Names.txt");
-		File textbookTitleFile = new File("textbook_titles.txt");
+		File firstNameFile = new File("resources/First_Names.txt");
+		File lastNameFile = new File("resources/Last_Names.txt");
+		File textbookTitleFile = new File("resources/textbook_titles.txt");
 		Scanner firstNameReader = null;
 		Scanner lastNameReader = null;
 		Scanner textbookTitleReader = null;

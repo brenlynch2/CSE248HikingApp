@@ -1,5 +1,6 @@
 package trails;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 /** This class provides storage and organizational functionality for Trail objects.
@@ -7,7 +8,8 @@ import java.util.LinkedList;
  * @author Brenden Lynch
  *
  */
-public class TrailStorageContainer {
+public class TrailStorageContainer implements Serializable {
+	private static final long serialVersionUID = -3031531439222242680L;
 	private LinkedList<Trail> trailList;
 	
 	/** Creates a new TrailStorageContainer object.

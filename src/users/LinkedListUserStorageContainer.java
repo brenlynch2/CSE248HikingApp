@@ -3,7 +3,12 @@ package users;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
-
+/**
+ * 
+ * @author Brenden Lynch
+ * @deprecated This class is superceded by the TreeMapUserStorageContainer, which has already been proven to be more efficient.
+ *
+ */
 public class LinkedListUserStorageContainer {
 	private LinkedList<User> userList;
 	

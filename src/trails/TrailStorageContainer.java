@@ -22,18 +22,24 @@ public class TrailStorageContainer implements Serializable {
 	 * 
 	 * @param inputTrail The Trail to add to the container.
 	 */
-	public void addTrail(Trail inputTrail) {
+	public boolean addTrail(Trail inputTrail) {
 		if(trailList.add(inputTrail)) {
 			sortTrailList();
+			return true;
+		} else {
+			return false;
 		}
 	}
 	/** Removes a specified Trail object from the container. If an element is successfully matched and removed, the container is sorted alphabetically.
 	 * 
 	 * @param inputTrail The Trail to be removed from the container.
 	 */
-	public void deleteTrail(Trail inputTrail) {
+	public boolean deleteTrail(Trail inputTrail) {
 		if(trailList.remove(inputTrail)) {
 			sortTrailList();
+			return true;
+		} else {
+			return false;
 		}
 	}
 	/** Gets the Trail object at the specified index within the container's internal data structure.

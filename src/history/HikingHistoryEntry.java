@@ -44,7 +44,6 @@ public class HikingHistoryEntry implements Serializable{
 	 * @param timestamp The timestamp associated with this history entry.
 	 * @param distance The distance value associated with this history entry.
 	 * @param duration The duration value associated with this history entry.
-	 * @param picturesTaken A LinkedList of all pictures to be associated with this history entry.
 	 * @param averagePace The average pace value associated with this history entry.
 	 */
 	public HikingHistoryEntry(Trail trailHiked, String timestamp, double distance, String duration, double averagePace) {

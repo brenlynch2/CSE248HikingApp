@@ -45,4 +45,11 @@ public class HikingHistoryStorageContainer implements Serializable {
 		}
 		return null;
 	}
+	/** Gets the size of the internal data structure.
+	 * 
+	 * @return an int value reflecting the size of the internal data structure.
+	 */
+	public int size() {
+		return hikingHistoryList.size();
+	}
 }

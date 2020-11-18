@@ -85,4 +85,11 @@ public class TrailStorageContainer implements Serializable {
 		}
 		return searchResults;
 	}
+	/** Gets the size of the internal data structure.
+	 * 
+	 * @return an int value reflecting the size of the internal data structure.
+	 */
+	public int size() {
+		return trailList.size();
+	}
 }

@@ -38,6 +38,23 @@ public class HikingHistoryEntry implements Serializable{
 		this.picturesTaken = new LinkedList<String>();
 		this.averagePace = averagePace;
 	}
+	/** Creates a new HikingHistoryEntry object. picturesTaken is not neccesary.
+	 * 
+	 * @param trailHiked A copy of the Trail object associated with this history entry.
+	 * @param timestamp The timestamp associated with this history entry.
+	 * @param distance The distance value associated with this history entry.
+	 * @param duration The duration value associated with this history entry.
+	 * @param picturesTaken A LinkedList of all pictures to be associated with this history entry.
+	 * @param averagePace The average pace value associated with this history entry.
+	 */
+	public HikingHistoryEntry(Trail trailHiked, String timestamp, double distance, String duration, double averagePace) {
+		this.trailHiked = trailHiked;
+		this.timestamp = timestamp;
+		this.distance = distance;
+		this.duration = duration;
+		this.picturesTaken = new LinkedList<String>();
+		this.averagePace = averagePace;
+	}
 	/** Get the Trail object associated with this history entry.
 	 * 
 	 * @return the Trail object associated with this hike.
@@ -122,6 +139,10 @@ public class HikingHistoryEntry implements Serializable{
 	public void setAveragePace(double averagePace) {
 		this.averagePace = averagePace;
 	}
-
+	@Override
+	public String toString() {
+		return "HikingHistoryEntry [trailHiked=" + trailHiked + ", timestamp=" + timestamp + ", distance=" + distance
+				+ ", duration=" + duration + ", picturesTaken=" + picturesTaken + ", averagePace=" + averagePace + "]";
+	}
 	
 }

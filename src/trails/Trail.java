@@ -8,6 +8,7 @@ import java.util.LinkedList;
  *
  */
 public class Trail implements Comparable<Trail>, Serializable {
+
 	private static final long serialVersionUID = 584287922068617299L;
 	private String trailName;
 	private String trailHeadAddress;
@@ -133,5 +134,10 @@ public class Trail implements Comparable<Trail>, Serializable {
 	public int compareTo(Trail t) {
 		return this.trailName.compareTo(t.trailName);
 	}
-	
+	@Override
+	public String toString() {
+		return "Trail [trailName=" + trailName + ", trailHeadAddress=" + trailHeadAddress + ", length=" + length
+				+ ", elevationGain=" + elevationGain + ", difficultyLevel=" + difficultyLevel
+				+ ", pointsOfInterestList=" + pointsOfInterestList + "]";
+	}
 }

@@ -28,7 +28,10 @@ public class TestingFunctions {
 		System.out.println("Testing is complete.");
 	}
 	
-	private static void testRunTrailStorageContainer() {
+	public static TrailStorageContainer testRunTrailStorageContainer() {
+		if(listOfLastNames.size() == 0 || listOfFirstNames.size() == 0 || listOfTitles.size() == 0) {
+			populateLists();
+		}
 		TrailStorageContainer testContainer = new TrailStorageContainer();
 		
 		//add 2000 randomly generated trails and 1 static trail to the container and print the time this took
@@ -52,9 +55,14 @@ public class TestingFunctions {
 		testContainer.deleteTrail(testTrail);
 		timeToComplete = System.nanoTime() - initialTime;
 		System.out.println(timeToComplete);
+		
+		return testContainer;
 	}
 
-	private static void testRunTreeMapUserStorageContainer() {
+	public static TreeMapUserStorageContainer testRunTreeMapUserStorageContainer() {
+		if(listOfLastNames.size() == 0 || listOfFirstNames.size() == 0 || listOfTitles.size() == 0) {
+			populateLists();
+		}
 		TreeMapUserStorageContainer testContainer = new TreeMapUserStorageContainer();
 		StringBuilder usernameBuilder = new StringBuilder();
 		StringBuilder passwordBuilder = new StringBuilder();
@@ -82,6 +90,8 @@ public class TestingFunctions {
 		testContainer.deleteUser(testUser);
 		timeToComplete = System.nanoTime() - initialTime;
 		System.out.println(timeToComplete);
+		
+		return testContainer;
 		
 	}
 

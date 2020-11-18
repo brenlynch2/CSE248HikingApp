@@ -1,8 +1,6 @@
 package users;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-
 import history.HikingHistoryEntry;
 import history.HikingHistoryStorageContainer;
 /** This class represents a user's account.

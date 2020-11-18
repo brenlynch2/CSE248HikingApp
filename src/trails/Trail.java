@@ -1,7 +1,6 @@
 package trails;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 /** This class represents a trail.
  * 
  * @author Brenden Lynch

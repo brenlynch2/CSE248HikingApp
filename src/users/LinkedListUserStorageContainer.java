@@ -9,6 +9,7 @@ import java.util.LinkedList;
  * @deprecated This class is superceded by the TreeMapUserStorageContainer, which has already been proven to be more efficient.
  *
  */
+@Deprecated
 public class LinkedListUserStorageContainer {
 	private LinkedList<User> userList;
 	
@@ -53,6 +54,7 @@ public class LinkedListUserStorageContainer {
 		 * 
 		 */
 		Comparator<User> userHashComparator = new Comparator<User>(){
+			@Override
 			public int compare(User u1, User u2) {
 				if(u1.getUserHash() == u2.getUserHash()) {
 					return 0;

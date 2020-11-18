@@ -91,6 +91,7 @@ public class GUI extends Application{
 		TextField usnField = new TextField();
 		
 		btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				if (usnField.getText().isBlank() || pwdField.getText().isBlank()) {
 					Alert infoDialog = new Alert(AlertType.ERROR,
@@ -113,6 +114,7 @@ public class GUI extends Application{
 			}
 		});
 		btnCreateNewAccount.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				Button btnFinalCreateNewAccount = new Button("Create New Account");
 				HBox firstNameInputContainer = new HBox();
@@ -228,24 +230,28 @@ public class GUI extends Application{
 		Stage mainFormStage = new Stage();
 		
 		btnStartHike.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				trailSearchForm();
 			}
 		});
 		btnViewHistory.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				viewHistoryForm();
 			}
 		});
 		btnEditAcctInfo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				editAcctInfoForm();
 			}
 		});
 		btnAdminFunctions.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				adminFunctionsForm();
@@ -472,6 +478,7 @@ public class GUI extends Application{
 			}
 		});
 		historyFormStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
 			public void handle(WindowEvent e) {
 				mainForm();
 			}

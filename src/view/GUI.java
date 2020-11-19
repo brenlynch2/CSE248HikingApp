@@ -78,8 +78,11 @@ public class GUI extends Application{
 			infoDialog.showAndWait();
 			
 		}
-	*/
+		 */
+		loginForm();
 		
+	}
+	public void loginForm() {
 		BorderPane rootPane = new BorderPane();
 		Button btnLogin = new Button("Login");
 		Button btnCreateNewAccount = new Button("Create New Account");
@@ -89,6 +92,7 @@ public class GUI extends Application{
 		Label lblPassword = new Label("Password:");
 		PasswordField pwdField = new PasswordField();
 		TextField usnField = new TextField();
+		Stage loginStage = new Stage();
 		
 		btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -99,7 +103,7 @@ public class GUI extends Application{
 					infoDialog.showAndWait();
 				} else {
 					User authenticatedUser = userList.authenticateUser(usnField.getText(), pwdField.getText());
-					if(authenticatedUser.equals(null)) {
+					if(authenticatedUser == null) {
 						Alert infoDialog = new Alert(AlertType.ERROR,
 								"No account associated with these credentials was found.", ButtonType.OK);
 						infoDialog.showAndWait();
@@ -257,6 +261,11 @@ public class GUI extends Application{
 				adminFunctionsForm();
 			}
 		});
+		mainFormStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				loginForm();
+			}
+		});
 		btnStartHike.setPrefSize(150, 100);
 		btnViewHistory.setPrefSize(150, 100);
 		btnEditAcctInfo.setPrefSize(150, 100);
@@ -271,7 +280,6 @@ public class GUI extends Application{
 		buttonContainer.add(btnAdminFunctions, 1, 1);
 		
 		Scene mainFormScene = new Scene(buttonContainer, 300, 215);
-		
 		mainFormStage.setScene(mainFormScene);
 		mainFormStage.show();
 	}

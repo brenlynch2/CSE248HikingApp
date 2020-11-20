@@ -120,88 +120,8 @@ public class GUI extends Application{
 		btnCreateNewAccount.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				Button btnFinalCreateNewAccount = new Button("Create New Account");
-				HBox firstNameInputContainer = new HBox();
-				HBox lastNameInputContainer = new HBox();
-				HBox phoneNumberInputContainer = new HBox();
-				HBox buttonContainer = new HBox();
-				HBox usernameInputContainer = new HBox();
-				HBox passwordInputContainer = new HBox();
-				Stage createNewAccountStage = new Stage();
-				TextField firstNameInputField = new TextField();
-				TextField lastNameInputField = new TextField();
-				TextField phoneNumberInputField = new TextField();
-				TextField usernameInputField = new TextField();
-				TextField passwordInputField = new TextField();
-				TilePane rootPane = new TilePane();
-				
-				btnFinalCreateNewAccount.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent e) {
-						if(firstNameInputField.getText().isEmpty() || lastNameInputField.getText().isEmpty() 
-								|| phoneNumberInputField.getText().isEmpty()
-								|| usernameInputField.getText().isEmpty() || passwordInputField.getText().isEmpty()) {
-							Alert infoDialog = new Alert(AlertType.ERROR,
-									"Please ensure all data fields have been filled properly and try again.", ButtonType.OK);
-							infoDialog.showAndWait();
-							return;
-						} else {
-							User newUser = new User(firstNameInputField.getText(),lastNameInputField.getText(),
-									phoneNumberInputField.getText(), usernameInputField.getText(),
-									passwordInputField.getText());
-							userList.addUser(newUser);
-							authenticatedUser = newUser;
-							Alert infoDialog = new Alert(AlertType.INFORMATION,
-									"Successfully created new account. Welcome, " + firstNameInputField.getText() + " ! You have been logged in.", ButtonType.OK);
-							infoDialog.showAndWait();
-							createNewAccountStage.close();
-							loginStage.close();
-							mainForm();
-						}
-					}
-				});
-				lastNameInputContainer.setPrefSize(200, 40);
-				lastNameInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
-				lastNameInputField.setPromptText("Enter last name here");
-				lastNameInputField.setFocusTraversable(false);
-				lastNameInputField.setPrefSize(190, 35);
-				btnFinalCreateNewAccount.setPrefSize(190, 32.5);
-				buttonContainer.setPrefSize(200, 40);
-				buttonContainer.setPadding(new Insets(2.5, 5, 5, 5));
-				phoneNumberInputContainer.setPrefSize(200, 40);
-				phoneNumberInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
-				phoneNumberInputField.setPromptText("Enter phone number here");
-				phoneNumberInputField.setFocusTraversable(false);
-				phoneNumberInputField.setPrefSize(190, 32.5);
-				firstNameInputContainer.setPrefSize(200, 40);
-				firstNameInputContainer.setPadding(new Insets(5, 5, 2.5, 5));
-				firstNameInputField.setPromptText("Enter first name here");
-				firstNameInputField.setFocusTraversable(false);
-				firstNameInputField.setPrefSize(190, 32.5);
-				
-				usernameInputField.setPrefSize(190, 35);
-				usernameInputField.setPromptText("Enter username here");
-				usernameInputField.setFocusTraversable(false);
-				passwordInputField.setPrefSize(190, 35);
-				passwordInputField.setPromptText("Enter password here");
-				passwordInputField.setFocusTraversable(false);
-				usernameInputContainer.setPrefSize(200, 40);
-				passwordInputContainer.setPrefSize(200, 40);
-				usernameInputContainer.setPadding(new Insets(2.5,5,2.5,5));
-				passwordInputContainer.setPadding(new Insets(2.5,5,5,5));
-				usernameInputContainer.getChildren().add(usernameInputField);
-				passwordInputContainer.getChildren().add(passwordInputField);
-				firstNameInputContainer.getChildren().add(firstNameInputField);
-				lastNameInputContainer.getChildren().add(lastNameInputField);
-				phoneNumberInputContainer.getChildren().add(phoneNumberInputField);
-				buttonContainer.getChildren().add(btnFinalCreateNewAccount);
-				rootPane.getChildren().addAll(firstNameInputContainer, lastNameInputContainer,
-						phoneNumberInputContainer,usernameInputContainer,passwordInputContainer, buttonContainer);
-				Scene createNewAccountScene = new Scene(rootPane, 200, 240);
-				createNewAccountStage.setScene(createNewAccountScene);
-				createNewAccountStage.setResizable(false);
-				createNewAccountStage.setTitle("Create New Account");
-				createNewAccountStage.show();
+				loginStage.close();
+				createNewAccountForm();
 			}
 		});
 		// these are in the order they are in for a reason, don't touch
@@ -224,6 +144,94 @@ public class GUI extends Application{
 		loginStage.setTitle("Welcome to the Hiking App");
 		loginStage.setResizable(false);
 		loginStage.show();
+	}
+	public void createNewAccountForm() {
+		Button btnFinalCreateNewAccount = new Button("Create New Account");
+		HBox firstNameInputContainer = new HBox();
+		HBox lastNameInputContainer = new HBox();
+		HBox phoneNumberInputContainer = new HBox();
+		HBox buttonContainer = new HBox();
+		HBox usernameInputContainer = new HBox();
+		HBox passwordInputContainer = new HBox();
+		Stage createNewAccountStage = new Stage();
+		TextField firstNameInputField = new TextField();
+		TextField lastNameInputField = new TextField();
+		TextField phoneNumberInputField = new TextField();
+		TextField usernameInputField = new TextField();
+		TextField passwordInputField = new TextField();
+		TilePane rootPane = new TilePane();
+		
+		btnFinalCreateNewAccount.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				if(firstNameInputField.getText().isEmpty() || lastNameInputField.getText().isEmpty() 
+						|| phoneNumberInputField.getText().isEmpty()
+						|| usernameInputField.getText().isEmpty() || passwordInputField.getText().isEmpty()) {
+					Alert infoDialog = new Alert(AlertType.ERROR,
+							"Please ensure all data fields have been filled properly and try again.", ButtonType.OK);
+					infoDialog.showAndWait();
+					return;
+				} else {
+					User newUser = new User(firstNameInputField.getText(),lastNameInputField.getText(),
+							phoneNumberInputField.getText(), usernameInputField.getText(),
+							passwordInputField.getText());
+					userList.addUser(newUser);
+					authenticatedUser = newUser;
+					Alert infoDialog = new Alert(AlertType.INFORMATION,
+							"Successfully created new account. Welcome, " + firstNameInputField.getText() + " ! You have been logged in.", ButtonType.OK);
+					infoDialog.showAndWait();
+					createNewAccountStage.close();
+					mainForm();
+				}
+			}
+		});
+		createNewAccountStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				loginForm();
+			}
+		});
+		lastNameInputContainer.setPrefSize(200, 40);
+		lastNameInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
+		lastNameInputField.setPromptText("Enter last name here");
+		lastNameInputField.setFocusTraversable(false);
+		lastNameInputField.setPrefSize(190, 35);
+		btnFinalCreateNewAccount.setPrefSize(190, 32.5);
+		buttonContainer.setPrefSize(200, 40);
+		buttonContainer.setPadding(new Insets(2.5, 5, 5, 5));
+		phoneNumberInputContainer.setPrefSize(200, 40);
+		phoneNumberInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
+		phoneNumberInputField.setPromptText("Enter phone number here");
+		phoneNumberInputField.setFocusTraversable(false);
+		phoneNumberInputField.setPrefSize(190, 32.5);
+		firstNameInputContainer.setPrefSize(200, 40);
+		firstNameInputContainer.setPadding(new Insets(5, 5, 2.5, 5));
+		firstNameInputField.setPromptText("Enter first name here");
+		firstNameInputField.setFocusTraversable(false);
+		firstNameInputField.setPrefSize(190, 32.5);
+		
+		usernameInputField.setPrefSize(190, 35);
+		usernameInputField.setPromptText("Enter username here");
+		usernameInputField.setFocusTraversable(false);
+		passwordInputField.setPrefSize(190, 35);
+		passwordInputField.setPromptText("Enter password here");
+		passwordInputField.setFocusTraversable(false);
+		usernameInputContainer.setPrefSize(200, 40);
+		passwordInputContainer.setPrefSize(200, 40);
+		usernameInputContainer.setPadding(new Insets(2.5,5,2.5,5));
+		passwordInputContainer.setPadding(new Insets(2.5,5,5,5));
+		usernameInputContainer.getChildren().add(usernameInputField);
+		passwordInputContainer.getChildren().add(passwordInputField);
+		firstNameInputContainer.getChildren().add(firstNameInputField);
+		lastNameInputContainer.getChildren().add(lastNameInputField);
+		phoneNumberInputContainer.getChildren().add(phoneNumberInputField);
+		buttonContainer.getChildren().add(btnFinalCreateNewAccount);
+		rootPane.getChildren().addAll(firstNameInputContainer, lastNameInputContainer,
+				phoneNumberInputContainer,usernameInputContainer,passwordInputContainer, buttonContainer);
+		Scene createNewAccountScene = new Scene(rootPane, 200, 240);
+		createNewAccountStage.setScene(createNewAccountScene);
+		createNewAccountStage.setResizable(false);
+		createNewAccountStage.setTitle("Create New Account");
+		createNewAccountStage.show();
 	}
 	public void mainForm() {
 		Button btnStartHike = new Button("Start Hike");
@@ -259,11 +267,6 @@ public class GUI extends Application{
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				adminFunctionsForm();
-			}
-		});
-		mainFormStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			public void handle(WindowEvent e) {
-				loginForm();
 			}
 		});
 		btnStartHike.setPrefSize(150, 100);
@@ -338,7 +341,11 @@ public class GUI extends Application{
 				}
 			}
 		});
-		
+		trailSearchStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				mainForm();
+			}
+		});
 		topSearchControlsContainer.setPrefSize(620,35);
 		topSearchControlsContainer.setPadding(new Insets(5,5,5,5));
 		topSearchControlsContainer.setSpacing(5);
@@ -413,6 +420,11 @@ public class GUI extends Application{
 				}
 			}
 		});
+		hikingFormStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				mainForm();
+			}
+		});
 		distanceInputContainer.setPrefSize(200, 40);
 		distanceInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
 		distanceInputField.setPromptText("Enter distance here");
@@ -437,7 +449,6 @@ public class GUI extends Application{
 		averagePaceInputContainer.setPrefSize(200, 40);
 		averagePaceInputContainer.setPadding(new Insets(2.5,5,2.5,5));
 		averagePaceInputContainer.getChildren().add(averagePaceInputField);
-		
 		timestampInputContainer.getChildren().add(timestampInputField);
 		distanceInputContainer.getChildren().add(distanceInputField);
 		durationInputContainer.getChildren().add(durationInputField);
@@ -556,9 +567,15 @@ public class GUI extends Application{
 				}
 			}
 		});
+		editAcctInfoStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				mainForm();
+			}
+		});
 		lastNameInputContainer.setPrefSize(200, 40);
 		lastNameInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
 		lastNameInputField.setPromptText("Enter last name here");
+		lastNameInputField.setText(authenticatedUser.getLastName());
 		lastNameInputField.setFocusTraversable(false);
 		lastNameInputField.setPrefSize(190, 35);
 		btnSaveInfo.setPrefSize(190, 32.5);
@@ -567,19 +584,22 @@ public class GUI extends Application{
 		phoneNumberInputContainer.setPrefSize(200, 40);
 		phoneNumberInputContainer.setPadding(new Insets(2.5, 5, 2.5, 5));
 		phoneNumberInputField.setPromptText("Enter phone number here");
+		phoneNumberInputField.setText(authenticatedUser.getPhoneNumber());
 		phoneNumberInputField.setFocusTraversable(false);
 		phoneNumberInputField.setPrefSize(190, 32.5);
 		firstNameInputContainer.setPrefSize(200, 40);
 		firstNameInputContainer.setPadding(new Insets(5, 5, 2.5, 5));
 		firstNameInputField.setPromptText("Enter first name here");
+		firstNameInputField.setText(authenticatedUser.getFirstName());
 		firstNameInputField.setFocusTraversable(false);
 		firstNameInputField.setPrefSize(190, 32.5);
-		
 		usernameInputField.setPrefSize(190, 35);
 		usernameInputField.setPromptText("Enter username here");
+		usernameInputField.setText(authenticatedUser.getUsername());
 		usernameInputField.setFocusTraversable(false);
 		passwordInputField.setPrefSize(190, 35);
 		passwordInputField.setPromptText("Enter password here");
+		passwordInputField.setText(authenticatedUser.getPassword());
 		passwordInputField.setFocusTraversable(false);
 		usernameInputContainer.setPrefSize(200, 40);
 		passwordInputContainer.setPrefSize(200, 40);
@@ -596,6 +616,7 @@ public class GUI extends Application{
 		Scene createNewAccountScene = new Scene(rootPane, 200, 240);
 		editAcctInfoStage.setScene(createNewAccountScene);
 		editAcctInfoStage.setResizable(false);
+		
 		editAcctInfoStage.setTitle("Create New Account");
 		editAcctInfoStage.show();
 	}

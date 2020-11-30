@@ -48,4 +48,11 @@ public class TreeMapUserStorageContainer implements Serializable {
 	public void deleteUser(User inputUser) {
 		userMap.remove(inputUser.getUserHash());
 	}
+	/** Returns a Boolean value corresponding to the state of the internal data struture's contents.
+	 * 
+	 * @return a Boolean value: true if this container is empty, false if it is not.
+	 */
+	public boolean isEmpty() {
+		return userMap.isEmpty();
+	}
 }

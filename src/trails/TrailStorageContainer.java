@@ -94,4 +94,11 @@ public class TrailStorageContainer implements Serializable {
 	public int size() {
 		return trailList.size();
 	}
+	/** Returns a Boolean value corresponding to the state of the internal data struture's contents.
+	 * 
+	 * @return a Boolean value: true if this container is empty, false if it is not.
+	 */
+	public boolean isEmpty() {
+		return trailList.isEmpty();
+	}
 }

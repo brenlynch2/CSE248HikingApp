@@ -9,8 +9,8 @@ import java.io.ObjectOutputStream;
 public class DataIO {
 	public static BackupContainer loadContainer() {
 		File inputBackup = new File("backup.dat");
-		ObjectInputStream datReader;
-		BackupContainer loadedContainer;
+		ObjectInputStream datReader = null;
+		BackupContainer loadedContainer = null;
 		try {
 			datReader =  new ObjectInputStream(new FileInputStream(inputBackup));
 			loadedContainer = (BackupContainer) datReader.readObject();
@@ -41,5 +41,9 @@ public class DataIO {
 			e.printStackTrace();
 			return;
 		}
+	}
+	public static boolean probeSaveFile() {
+		File inputBackup = new File("backup.dat");
+		return inputBackup.exists();
 	}
 }

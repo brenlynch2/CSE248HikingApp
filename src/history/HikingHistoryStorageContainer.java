@@ -7,6 +7,9 @@ import java.util.LinkedList;
  * @author Brenden Lynch
  *
  */
+
+import utilities.BackupContainer;
+import utilities.DataIO;
 public class HikingHistoryStorageContainer implements Serializable {
 	
 	private static final long serialVersionUID = -7009333831083038934L;
@@ -51,5 +54,9 @@ public class HikingHistoryStorageContainer implements Serializable {
 	 */
 	public int size() {
 		return hikingHistoryList.size();
+	}
+
+	public Boolean isEmpty() {
+		return hikingHistoryList.isEmpty();
 	}
 }

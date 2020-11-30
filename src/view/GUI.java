@@ -29,39 +29,50 @@ import trails.Trail;
 import trails.TrailStorageContainer;
 import users.TreeMapUserStorageContainer;
 import users.User;
+import utilities.BackupContainer;
+import utilities.DataIO;
 import utilities.TestingFunctions;
 
 public class GUI extends Application{
 	private static ObservableList<HikingHistoryEntry> driverListHistoryWindowResultsView = FXCollections.observableArrayList();
 	private static ObservableList<Trail> driverListTrailSearchWindowResultsView = FXCollections.observableArrayList();
-	private static TreeMapUserStorageContainer userList = new TreeMapUserStorageContainer();
+	private static TreeMapUserStorageContainer userList = null;
 	private static User authenticatedUser = null;
-	private static TrailStorageContainer trailList = new TrailStorageContainer();
-	//private static BackupContainer loadedContainer = null;
+	private static TrailStorageContainer trailList = null;
+	private static BackupContainer loadedContainer = null;
 	
 	public static void main(String [] args) {
 		/*
-		loadedContainer = DataIO.loadContainer();
-		if(loadedContainer != new BackupContainer()) {
-			userList = (TreeMapUserStorageContainer)loadedContainer.getData(0);
-			trailList = (TrailStorageContainer)loadedContainer.getData(1);
-		}
+		if(DataIO.probeSaveFile()) {
+			loadedContainer = DataIO.loadContainer();
+			if(!loadedContainer.isEmpty()) {
+				userList = (TreeMapUserStorageContainer)loadedContainer.getData(0);
+				trailList = (TrailStorageContainer)loadedContainer.getData(1);
+			}
+		} 
 		*/
 		Application.launch(args);
 	}
 	public static void syncLists() {
 		driverListHistoryWindowResultsView.clear();
 		driverListTrailSearchWindowResultsView.clear();
-		for(int i = 0; i < trailList.size(); i++) {
-			driverListTrailSearchWindowResultsView.add(trailList.getTrail(i));
+		if(!trailList.isEmpty()) {
+			for(int i = 0; i < trailList.size(); i++) {
+				driverListTrailSearchWindowResultsView.add(trailList.getTrail(i));
+			}
 		}
-		HikingHistoryStorageContainer currentContainer = authenticatedUser.getHistoryList();
-		for(int i = 0; i < currentContainer.size(); i++) {
-			driverListHistoryWindowResultsView.add(currentContainer.getEntry(i));
+		if(!authenticatedUser.getHistoryList().isEmpty()) {
+			HikingHistoryStorageContainer currentContainer = authenticatedUser.getHistoryList();
+			for(int i = 0; i < currentContainer.size(); i++) {
+				driverListHistoryWindowResultsView.add(currentContainer.getEntry(i));
+			}
 		}
 	}
 	public static void populateListsRandomly() {
 		userList = TestingFunctions.testRunTreeMapUserStorageContainer();
+		if(authenticatedUser != null) {
+			userList.addUser(authenticatedUser);
+		}
 		trailList = TestingFunctions.testRunTrailStorageContainer();
 		Alert infoDialog = new Alert(AlertType.INFORMATION,
 				"Both the trailList and the userList containers have been populated with random values.", ButtonType.OK);
@@ -69,8 +80,7 @@ public class GUI extends Application{
 	}
 	@Override
 	public void start(Stage loginStage) throws Exception {
-		/*
-		if (loadedContainer.equals(null)) {
+		if (loadedContainer == null) {
 			userList = new TreeMapUserStorageContainer();
 			trailList = new TrailStorageContainer();
 			Alert infoDialog = new Alert(AlertType.CONFIRMATION,
@@ -78,9 +88,7 @@ public class GUI extends Application{
 			infoDialog.showAndWait();
 			
 		}
-		 */
 		loginForm();
-		
 	}
 	public void loginForm() {
 		BorderPane rootPane = new BorderPane();
@@ -124,7 +132,6 @@ public class GUI extends Application{
 				createNewAccountForm();
 			}
 		});
-		// these are in the order they are in for a reason, don't touch
 		btnContainer.setPadding(new Insets(0, 0, 5, 26));
 		btnContainer.setSpacing(5);
 		btnLogin.setPrefWidth(50);
@@ -208,7 +215,6 @@ public class GUI extends Application{
 		firstNameInputField.setPromptText("Enter first name here");
 		firstNameInputField.setFocusTraversable(false);
 		firstNameInputField.setPrefSize(190, 32.5);
-		
 		usernameInputField.setPrefSize(190, 35);
 		usernameInputField.setPromptText("Enter username here");
 		usernameInputField.setFocusTraversable(false);
@@ -267,6 +273,16 @@ public class GUI extends Application{
 			public void handle(ActionEvent e) {
 				mainFormStage.close();
 				adminFunctionsForm();
+			}
+		});
+		mainFormStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent e) {
+				if(userList.isEmpty() && trailList.isEmpty()) {
+					return;
+				} else {
+					BackupContainer outputContainer = new BackupContainer(userList, trailList);
+					DataIO.saveContainer(outputContainer);
+				}
 			}
 		});
 		btnStartHike.setPrefSize(150, 100);

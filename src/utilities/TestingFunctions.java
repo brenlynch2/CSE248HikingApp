@@ -17,17 +17,6 @@ public class TestingFunctions {
 	private static LinkedList<String> listOfFirstNames = new LinkedList<String>();
 	private static LinkedList<String> listOfTitles = new LinkedList<String>();
 	
-	public static void main(String[] args) {
-		populateLists();
-		System.out.println("Test Results for LinkedList based UserStorageContainer:");
-		testRunLinkedListUserStorageContainer();
-		System.out.println("Test Results for TreeMap based UserStorageContainer:");
-		testRunTreeMapUserStorageContainer();
-		System.out.println("Test Results for TrailStorageContainer:");
-		testRunTrailStorageContainer();
-		System.out.println("Testing is complete.");
-	}
-	
 	public static TrailStorageContainer testRunTrailStorageContainer() {
 		if(listOfLastNames.size() == 0 || listOfFirstNames.size() == 0 || listOfTitles.size() == 0) {
 			populateLists();
@@ -36,7 +25,7 @@ public class TestingFunctions {
 		
 		//add 2000 randomly generated trails and 1 static trail to the container and print the time this took
 		long initialTime = System.nanoTime();
-		for(int i = 0; i < 2000; i++) {
+		for(int i = 0; i < 10; i++) {
 			testContainer.addTrail(new Trail(listOfTitles.get(i)));
 		}
 		Trail testTrail = new Trail("Brenden's Trail");
@@ -69,7 +58,7 @@ public class TestingFunctions {
 		
 		//add 2000 users to the list and return the time this took.
 		long initialTime = System.nanoTime();
-		for(int i = 0; i < 2000; i++) {
+		for(int i = 0; i < 10; i++) {
 			usernameBuilder.append(listOfFirstNames.get(i) + ' ' + listOfLastNames.get(i));
 			passwordBuilder.append(listOfTitles.get(i));
 			testContainer.addUser(new User(usernameBuilder.toString(), passwordBuilder.toString()));
